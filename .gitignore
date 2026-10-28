@@ -1,0 +1,27 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+.env
+.env.*
+!.env.example
+
+.ipynb_checkpoints/
+.jupyter/
+
+# Keep datasets out of Git unless the instructor explicitly permits sharing them.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Local editor and operating-system files.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
