@@ -1,0 +1,17 @@
+item,primary_group,alternative_group,reason
+frozen dessert,frozen_foods,dairy_eggs,Frozen form is used for the primary group; a dairy/dessert taxonomy is also plausible.
+packaged fruit/vegetables,packaged_produce,fresh_vegetables,Kept separate because packaging may indicate mixed or processed produce.
+finished products,ready_to_eat_meals,pantry_baking_grains,The source label is broad; ready-to-eat is a practical but uncertain interpretation.
+meat spreads,ready_to_eat_meals,meat_poultry,Could be classified by ingredient (meat) or use (spread/ready-to-eat).
+rubbing alcohol,household_cleaning,personal_care_hygiene,May be a household cleaner or a personal-care/first-aid product.
+flower (seeds),garden_plants,pantry_baking_grains,"The category label is interpreted as seeds for planting, not food seeds."
+organic products,specialty_miscellaneous,fresh_vegetables,Organic is a production attribute rather than a product type; item identity is unspecified.
+seasonal products,specialty_miscellaneous,fresh_fruit,Seasonality does not identify a specific product class.
+misc. beverages,nonalcoholic_beverages,specialty_miscellaneous,The source label does not specify beverage type; a specialty grouping is also plausible.
+specialty fat,condiments_cooking,dairy_eggs,Grouped by cooking use; product composition is not specified.
+margarine,dairy_eggs,condiments_cooking,A butter substitute; may be grouped with dairy-case spreads or cooking fats.
+potato products,fresh_vegetables,pantry_baking_grains,Primary grouping follows the potato ingredient; the label may refer to a processed shelf-stable product.
+syrup,snacks_sweets,nonalcoholic_beverages,Could be a sweet spread/topping or a drink ingredient.
+nut snack,snacks_sweets,fresh_fruit,"Grouped by snack use, although nuts are botanically distinct from fruit."
+nuts/prunes,snacks_sweets,fresh_fruit,The label combines nuts and dried fruit; grouped by likely packaged snack use.
+long life bakery product,bakery_bread,pantry_baking_grains,"Shelf-stable bakery is grouped by product type, not storage life."

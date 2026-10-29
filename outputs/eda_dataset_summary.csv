@@ -1,0 +1,3 @@
+dataset,baskets,unique_items,mean_basket_size,median_basket_size,min_basket_size,q25_basket_size,q75_basket_size,max_basket_size,target_label_available
+train,8300,168,4.243734939759036,3.0,1,1.0,6.0,29,True
+test_observed_after_target_removal,1535,164,5.074918566775244,4.0,1,3.0,7.0,31,False

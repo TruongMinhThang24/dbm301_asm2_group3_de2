@@ -1,0 +1,8 @@
+issue,count,denominator,rate_percent,evidence,handling
+Single-item train baskets,2159,8300,26.012048192771083,Counted from original train basket sizes.,Retain for EDA/association; exclude only when simulating the provided test protocol.
+Very large train baskets,231,8300,2.783132530120482,Very-large threshold is the Tukey upper fence Q3 + 1.5×IQR = 13.50; counted strictly above the fence.,Inspect; do not delete automatically.
+Repeated item within a train basket,0,8300,0.0,Exact repeated tokens within one parsed basket.,Would need review; no automatic deduplication.
+Duplicate train basket contents,2608,8300,31.42168674698795,Order-insensitive item-set duplicates beyond the first; distinct basket IDs are retained.,Keep as separate transactions unless provenance proves an ingestion error.
+Train/test basket_id overlap,0,1535,0.0,Set intersection of the supplied identifiers.,Must be zero; otherwise stop before modeling.
+Tokens with leading/trailing whitespace,0,43013,0.0,Measured before strip(); parsed labels are trimmed for consistent tokenization.,Normalize boundary whitespace only; retain the raw CSV unchanged.
+Item labels containing uppercase characters,2,169,1.183431952662722,"Exact labels differing from casefold(); observed labels: Instant food products, UHT-milk. UHT-milk uses an acronym; Instant food products is title-cased although the dictionary says lowercase.",Preserve exact source labels; confirm the dictionary convention with the group before any normalization.

@@ -1,0 +1,14 @@
+check,status,evidence
+Provided train/test schemas and expected row counts,PASS,"train=8,300 and test=1,535; both have exactly basket_id,items."
+basket_id unique within each split,PASS,train unique=True; test unique=True.
+Train/test basket_id disjoint,PASS,intersection size=0.
+Items parse and matrix row sums match train basket sizes,PASS,"Boolean matrix shape=(8300, 168); every row sum equals original train basket size."
+Taxonomy covers exact observed union vocabulary,PASS,169 unique labels mapped across 23 groups; union vocabulary=169.
+Test contains no target token,PASS,Checks only the released items field; this is not a test label and does not infer the hidden target.
+Test target labels are absent from input schema,PASS,"Raw fields=['basket_id', 'items']; target label column is not present."
+No test-only vocabulary used to fit supervised item vocabulary,PASS,Train matrix uses train-only vocabulary (168 items); test-only items recorded for OOV handling: ['baby food'].
+basket_id excluded from transaction features,PASS,basket_id is retained only as the matrix row index/identifier.
+Target removed from simulated supervised features,PASS,simulate_test_observation selects original size >=2 before removing target; it returns labels separately.
+Preprocessing fit inside each future CV fold,NOT VERIFIED,No supervised model/CV pipeline is part of WBS 2.0-2.7; verify in WBS 4.x before reporting model metrics.
+No external or public labeled data used,NOT VERIFIED,This is a provenance/process requirement; preserve the instructor-provided source files and team activity log.
+Original data files unchanged,NOT VERIFIED,The project pipeline reads raw CSVs without writing to data/raw; verify original hashes if files are moved or replaced.

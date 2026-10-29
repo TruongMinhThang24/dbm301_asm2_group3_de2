@@ -1,0 +1,24 @@
+group,basket_count,group_label,support
+dairy_eggs,4096,Dairy and eggs,0.49349397590361443
+bakery_bread,3102,Bakery and bread,0.37373493975903616
+nonalcoholic_beverages,3038,Non-alcoholic beverages,0.3660240963855422
+meat_poultry,2441,Meat and poultry,0.29409638554216866
+fresh_vegetables,2174,Fresh vegetables,0.2619277108433735
+fresh_fruit,1944,Fresh fruit,0.23421686746987952
+alcoholic_beverages,1715,Alcoholic beverages,0.20662650602409638
+snacks_sweets,1512,Snacks and sweets,0.1821686746987952
+household_kitchen,1465,Household and kitchen,0.17650602409638555
+frozen_foods,893,Frozen foods,0.10759036144578313
+condiments_cooking,726,Condiments and cooking ingredients,0.0874698795180723
+pantry_baking_grains,715,"Pantry, baking and grains",0.086144578313253
+media_stationery,699,Media and stationery,0.08421686746987952
+canned_preserved,471,Canned and preserved foods,0.05674698795180723
+ready_to_eat_meals,447,Ready-to-eat foods and soups,0.053855421686746986
+household_cleaning,436,Household cleaning,0.05253012048192771
+personal_care_hygiene,434,Personal care and hygiene,0.052289156626506024
+pet_products,307,Pet products,0.036987951807228914
+garden_plants,235,Garden and plants,0.028313253012048192
+specialty_miscellaneous,159,Specialty and miscellaneous groceries,0.019156626506024097
+packaged_produce,116,Packaged fruit and vegetables,0.013975903614457831
+fish_seafood,112,Fish and seafood,0.013493975903614458
+baby_products,4,Baby products,0.00048192771084337347

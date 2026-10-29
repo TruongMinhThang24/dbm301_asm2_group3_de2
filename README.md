@@ -51,16 +51,24 @@ docs/                  Team workflow and project notes
 
 Rubric criteria and the evidence expected for each submission item are mapped in [docs/rubric_evidence_matrix.md](./docs/rubric_evidence_matrix.md).
 
-Shared paths are in `groceries_group3.common.paths`; `RANDOM_SEED` and `seed_everything()` are in `groceries_group3.common.reproducibility`. Set estimator-specific `random_state` explicitly as well.
+The reusable project modules under `src/` support development and tests. The submission notebook is intentionally self-contained and does not import those modules; its fixed seed is 42.
+
+## Data preparation — Thang's scope (WBS 2.0–2.7)
+
+Place the instructor-provided `groceries_train.csv` and `groceries_test.csv` in `data/raw/`. The raw directory is Git-ignored. Run the notebook with the project kernel. Its completed code is limited to Thang's data preparation and EDA; Parts 2–6 remain scaffolds for the other assignment work.
+
+The notebook embeds the reviewed 169-item taxonomy and alternative assignments, so neither mapping file nor `src/` is required to run it. It writes the item mapping and disputed alternatives under `data/mappings/`. Measuring their effect on association rules belongs to task 3.5, not this section.
+
+Test labels are hidden; the absence of `other vegetables` from the visible test items must never be treated as a negative label. Prediction and anomaly-score files are not produced by Thang's data-preparation section.
 
 ## Data and experiment rules
 
 - Put the instructor-approved source file in `data/raw/`. Do not edit the original.
 - Raw and processed data are ignored by Git by default. Share data only if the instructor permits it; otherwise tell teammates how to obtain the approved file.
-- Use paths from the shared paths module, not a personal Windows absolute path.
+- The notebook resolves the provided data folder relative to the current working directory; do not add personal absolute paths.
 - Fit preprocessing only on training data and reuse the fitted transformation for validation/test data to avoid leakage.
 - Record important parameters and seeds in the notebook. Keep the final notebook runnable from top to bottom and within the assignment's time limit.
-- Store final deliverables in `outputs/`; do not commit private or restricted source data.
+- Package only the six instructor-required deliverables in `Nhom3_De2.zip`; do not include private or restricted source data.
 
 ## Team Git workflow
 
