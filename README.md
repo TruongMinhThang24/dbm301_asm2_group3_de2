@@ -49,6 +49,8 @@ tests/                 Small checks for reusable code
 docs/                  Team workflow and project notes
 ```
 
+Rubric criteria and the evidence expected for each submission item are mapped in [docs/rubric_evidence_matrix.md](./docs/rubric_evidence_matrix.md).
+
 Shared paths are in `groceries_group3.common.paths`; `RANDOM_SEED` and `seed_everything()` are in `groceries_group3.common.reproducibility`. Set estimator-specific `random_state` explicitly as well.
 
 ## Data and experiment rules
