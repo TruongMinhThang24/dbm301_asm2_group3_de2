@@ -57,7 +57,7 @@ The reusable project modules under `src/` support development and tests. The sub
 
 Place the instructor-provided `groceries_train.csv` and `groceries_test.csv` in `data/raw/`. The raw directory is Git-ignored. Run the notebook with the project kernel. Its completed code is limited to Thang's data preparation and EDA; Parts 2–6 remain scaffolds for the other assignment work.
 
-The notebook embeds the reviewed 169-item taxonomy and alternative assignments, so neither mapping file nor `src/` is required to run it. It writes the item mapping and disputed alternatives under `data/mappings/`. Measuring their effect on association rules belongs to task 3.5, not this section.
+The notebook embeds the reviewed item_group_rules mapping for 169 items and alternative assignments, so neither mapping file nor `src/` is required to run it. It writes the item mapping and disputed alternatives under `data/mappings/`. Measuring their effect on association rules belongs to task 3.5, not this section.
 
 Test labels are hidden; the absence of `other vegetables` from the visible test items must never be treated as a negative label. Prediction and anomaly-score files are not produced by Thang's data-preparation section.
 

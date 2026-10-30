@@ -1,5 +1,5 @@
 item,primary_group,alternative_group,reason
-frozen dessert,frozen_foods,dairy_eggs,Frozen form is used for the primary group; a dairy/dessert taxonomy is also plausible.
+frozen dessert,frozen_foods,dairy_eggs,Frozen form is used for the primary group; a dairy/dessert group assignment is also plausible.
 packaged fruit/vegetables,packaged_produce,fresh_vegetables,Kept separate because packaging may indicate mixed or processed produce.
 finished products,ready_to_eat_meals,pantry_baking_grains,The source label is broad; ready-to-eat is a practical but uncertain interpretation.
 meat spreads,ready_to_eat_meals,meat_poultry,Could be classified by ingredient (meat) or use (spread/ready-to-eat).
