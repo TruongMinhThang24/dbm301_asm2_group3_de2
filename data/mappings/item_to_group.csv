@@ -1,0 +1,170 @@
+item,group,group_name
+Instant food products,pantry_baking_grains,"Pantry, baking and grains"
+UHT-milk,dairy_eggs,Dairy and eggs
+abrasive cleaner,household_cleaning,Household cleaning
+artif. sweetener,specialty_miscellaneous,Specialty and miscellaneous groceries
+baby cosmetics,baby_products,Baby products
+baby food,baby_products,Baby products
+bags,household_kitchen,Household and kitchen
+baking powder,pantry_baking_grains,"Pantry, baking and grains"
+bathroom cleaner,household_cleaning,Household cleaning
+beef,meat_poultry,Meat and poultry
+berries,fresh_fruit,Fresh fruit
+beverages,nonalcoholic_beverages,Non-alcoholic beverages
+bottled beer,alcoholic_beverages,Alcoholic beverages
+bottled water,nonalcoholic_beverages,Non-alcoholic beverages
+brandy,alcoholic_beverages,Alcoholic beverages
+brown bread,bakery_bread,Bakery and bread
+butter,dairy_eggs,Dairy and eggs
+butter milk,dairy_eggs,Dairy and eggs
+cake bar,bakery_bread,Bakery and bread
+candles,household_kitchen,Household and kitchen
+candy,snacks_sweets,Snacks and sweets
+canned beer,alcoholic_beverages,Alcoholic beverages
+canned fish,canned_preserved,Canned and preserved foods
+canned fruit,canned_preserved,Canned and preserved foods
+canned vegetables,canned_preserved,Canned and preserved foods
+cat food,pet_products,Pet products
+cereals,pantry_baking_grains,"Pantry, baking and grains"
+chewing gum,snacks_sweets,Snacks and sweets
+chicken,meat_poultry,Meat and poultry
+chocolate,snacks_sweets,Snacks and sweets
+chocolate marshmallow,snacks_sweets,Snacks and sweets
+citrus fruit,fresh_fruit,Fresh fruit
+cleaner,household_cleaning,Household cleaning
+cling film/bags,household_kitchen,Household and kitchen
+cocoa drinks,nonalcoholic_beverages,Non-alcoholic beverages
+coffee,nonalcoholic_beverages,Non-alcoholic beverages
+condensed milk,dairy_eggs,Dairy and eggs
+cooking chocolate,snacks_sweets,Snacks and sweets
+cookware,household_kitchen,Household and kitchen
+cream,dairy_eggs,Dairy and eggs
+cream cheese,dairy_eggs,Dairy and eggs
+curd,dairy_eggs,Dairy and eggs
+curd cheese,dairy_eggs,Dairy and eggs
+decalcifier,household_cleaning,Household cleaning
+dental care,personal_care_hygiene,Personal care and hygiene
+dessert,ready_to_eat_meals,Ready-to-eat foods and soups
+detergent,household_cleaning,Household cleaning
+dish cleaner,household_cleaning,Household cleaning
+dishes,household_kitchen,Household and kitchen
+dog food,pet_products,Pet products
+domestic eggs,dairy_eggs,Dairy and eggs
+female sanitary products,personal_care_hygiene,Personal care and hygiene
+finished products,ready_to_eat_meals,Ready-to-eat foods and soups
+fish,fish_seafood,Fish and seafood
+flour,pantry_baking_grains,"Pantry, baking and grains"
+flower (seeds),garden_plants,Garden and plants
+flower soil/fertilizer,garden_plants,Garden and plants
+frankfurter,meat_poultry,Meat and poultry
+frozen chicken,frozen_foods,Frozen foods
+frozen dessert,frozen_foods,Frozen foods
+frozen fish,fish_seafood,Fish and seafood
+frozen fruits,frozen_foods,Frozen foods
+frozen meals,frozen_foods,Frozen foods
+frozen potato products,frozen_foods,Frozen foods
+frozen vegetables,frozen_foods,Frozen foods
+fruit/vegetable juice,nonalcoholic_beverages,Non-alcoholic beverages
+grapes,fresh_fruit,Fresh fruit
+hair spray,personal_care_hygiene,Personal care and hygiene
+ham,meat_poultry,Meat and poultry
+hamburger meat,meat_poultry,Meat and poultry
+hard cheese,dairy_eggs,Dairy and eggs
+herbs,condiments_cooking,Condiments and cooking ingredients
+honey,snacks_sweets,Snacks and sweets
+house keeping products,household_cleaning,Household cleaning
+hygiene articles,personal_care_hygiene,Personal care and hygiene
+ice cream,frozen_foods,Frozen foods
+instant coffee,nonalcoholic_beverages,Non-alcoholic beverages
+jam,canned_preserved,Canned and preserved foods
+ketchup,condiments_cooking,Condiments and cooking ingredients
+kitchen towels,household_kitchen,Household and kitchen
+kitchen utensil,household_kitchen,Household and kitchen
+light bulbs,household_kitchen,Household and kitchen
+liqueur,alcoholic_beverages,Alcoholic beverages
+liquor,alcoholic_beverages,Alcoholic beverages
+liquor (appetizer),alcoholic_beverages,Alcoholic beverages
+liver loaf,meat_poultry,Meat and poultry
+long life bakery product,bakery_bread,Bakery and bread
+make up remover,personal_care_hygiene,Personal care and hygiene
+male cosmetics,personal_care_hygiene,Personal care and hygiene
+margarine,dairy_eggs,Dairy and eggs
+mayonnaise,condiments_cooking,Condiments and cooking ingredients
+meat,meat_poultry,Meat and poultry
+meat spreads,ready_to_eat_meals,Ready-to-eat foods and soups
+misc. beverages,nonalcoholic_beverages,Non-alcoholic beverages
+mustard,condiments_cooking,Condiments and cooking ingredients
+napkins,household_kitchen,Household and kitchen
+newspapers,media_stationery,Media and stationery
+nut snack,snacks_sweets,Snacks and sweets
+nuts/prunes,snacks_sweets,Snacks and sweets
+oil,condiments_cooking,Condiments and cooking ingredients
+onions,fresh_vegetables,Fresh vegetables
+organic products,specialty_miscellaneous,Specialty and miscellaneous groceries
+organic sausage,meat_poultry,Meat and poultry
+other vegetables,fresh_vegetables,Fresh vegetables
+packaged fruit/vegetables,packaged_produce,Packaged fruit and vegetables
+pasta,pantry_baking_grains,"Pantry, baking and grains"
+pastry,bakery_bread,Bakery and bread
+pet care,pet_products,Pet products
+photo/film,media_stationery,Media and stationery
+pickled vegetables,canned_preserved,Canned and preserved foods
+pip fruit,fresh_fruit,Fresh fruit
+popcorn,snacks_sweets,Snacks and sweets
+pork,meat_poultry,Meat and poultry
+pot plants,garden_plants,Garden and plants
+potato products,fresh_vegetables,Fresh vegetables
+preservation products,canned_preserved,Canned and preserved foods
+processed cheese,dairy_eggs,Dairy and eggs
+prosecco,alcoholic_beverages,Alcoholic beverages
+pudding powder,pantry_baking_grains,"Pantry, baking and grains"
+ready soups,ready_to_eat_meals,Ready-to-eat foods and soups
+red/blush wine,alcoholic_beverages,Alcoholic beverages
+rice,pantry_baking_grains,"Pantry, baking and grains"
+roll products,bakery_bread,Bakery and bread
+rolls/buns,bakery_bread,Bakery and bread
+root vegetables,fresh_vegetables,Fresh vegetables
+rubbing alcohol,household_cleaning,Household cleaning
+rum,alcoholic_beverages,Alcoholic beverages
+salad dressing,condiments_cooking,Condiments and cooking ingredients
+salt,condiments_cooking,Condiments and cooking ingredients
+salty snack,snacks_sweets,Snacks and sweets
+sauces,condiments_cooking,Condiments and cooking ingredients
+sausage,meat_poultry,Meat and poultry
+seasonal products,specialty_miscellaneous,Specialty and miscellaneous groceries
+semi-finished bread,bakery_bread,Bakery and bread
+shopping bags,household_kitchen,Household and kitchen
+skin care,personal_care_hygiene,Personal care and hygiene
+sliced cheese,dairy_eggs,Dairy and eggs
+snack products,snacks_sweets,Snacks and sweets
+soap,personal_care_hygiene,Personal care and hygiene
+soda,nonalcoholic_beverages,Non-alcoholic beverages
+soft cheese,dairy_eggs,Dairy and eggs
+softener,household_cleaning,Household cleaning
+sound storage medium,media_stationery,Media and stationery
+soups,ready_to_eat_meals,Ready-to-eat foods and soups
+sparkling wine,alcoholic_beverages,Alcoholic beverages
+specialty bar,snacks_sweets,Snacks and sweets
+specialty cheese,dairy_eggs,Dairy and eggs
+specialty chocolate,snacks_sweets,Snacks and sweets
+specialty fat,condiments_cooking,Condiments and cooking ingredients
+specialty vegetables,fresh_vegetables,Fresh vegetables
+spices,condiments_cooking,Condiments and cooking ingredients
+spread cheese,dairy_eggs,Dairy and eggs
+sugar,pantry_baking_grains,"Pantry, baking and grains"
+sweet spreads,canned_preserved,Canned and preserved foods
+syrup,snacks_sweets,Snacks and sweets
+tea,nonalcoholic_beverages,Non-alcoholic beverages
+tidbits,snacks_sweets,Snacks and sweets
+toilet cleaner,household_cleaning,Household cleaning
+tropical fruit,fresh_fruit,Fresh fruit
+turkey,meat_poultry,Meat and poultry
+vinegar,condiments_cooking,Condiments and cooking ingredients
+waffles,bakery_bread,Bakery and bread
+whipped/sour cream,dairy_eggs,Dairy and eggs
+whisky,alcoholic_beverages,Alcoholic beverages
+white bread,bakery_bread,Bakery and bread
+white wine,alcoholic_beverages,Alcoholic beverages
+whole milk,dairy_eggs,Dairy and eggs
+yogurt,dairy_eggs,Dairy and eggs
+zwieback,bakery_bread,Bakery and bread
