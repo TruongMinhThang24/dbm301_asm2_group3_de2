@@ -1,0 +1,192 @@
+feature
+group::alcoholic_beverages
+group::baby_products
+group::bakery_bread
+group::canned_preserved
+group::condiments_cooking
+group::dairy_eggs
+group::fish_seafood
+group::fresh_fruit
+group::fresh_vegetables
+group::frozen_foods
+group::garden_plants
+group::household_cleaning
+group::household_kitchen
+group::meat_poultry
+group::media_stationery
+group::nonalcoholic_beverages
+group::packaged_produce
+group::pantry_baking_grains
+group::personal_care_hygiene
+group::pet_products
+group::ready_to_eat_meals
+group::snacks_sweets
+group::specialty_miscellaneous
+item::Instant food products
+item::UHT-milk
+item::abrasive cleaner
+item::artif. sweetener
+item::baby cosmetics
+item::bags
+item::baking powder
+item::bathroom cleaner
+item::beef
+item::berries
+item::beverages
+item::bottled beer
+item::bottled water
+item::brandy
+item::brown bread
+item::butter
+item::butter milk
+item::cake bar
+item::candles
+item::candy
+item::canned beer
+item::canned fish
+item::canned fruit
+item::canned vegetables
+item::cat food
+item::cereals
+item::chewing gum
+item::chicken
+item::chocolate
+item::chocolate marshmallow
+item::citrus fruit
+item::cleaner
+item::cling film/bags
+item::cocoa drinks
+item::coffee
+item::condensed milk
+item::cooking chocolate
+item::cookware
+item::cream
+item::cream cheese
+item::curd
+item::curd cheese
+item::decalcifier
+item::dental care
+item::dessert
+item::detergent
+item::dish cleaner
+item::dishes
+item::dog food
+item::domestic eggs
+item::female sanitary products
+item::finished products
+item::fish
+item::flour
+item::flower (seeds)
+item::flower soil/fertilizer
+item::frankfurter
+item::frozen chicken
+item::frozen dessert
+item::frozen fish
+item::frozen fruits
+item::frozen meals
+item::frozen potato products
+item::frozen vegetables
+item::fruit/vegetable juice
+item::grapes
+item::hair spray
+item::ham
+item::hamburger meat
+item::hard cheese
+item::herbs
+item::honey
+item::house keeping products
+item::hygiene articles
+item::ice cream
+item::instant coffee
+item::jam
+item::ketchup
+item::kitchen towels
+item::kitchen utensil
+item::light bulbs
+item::liqueur
+item::liquor
+item::liquor (appetizer)
+item::liver loaf
+item::long life bakery product
+item::make up remover
+item::male cosmetics
+item::margarine
+item::mayonnaise
+item::meat
+item::meat spreads
+item::misc. beverages
+item::mustard
+item::napkins
+item::newspapers
+item::nut snack
+item::nuts/prunes
+item::oil
+item::onions
+item::organic products
+item::organic sausage
+item::packaged fruit/vegetables
+item::pasta
+item::pastry
+item::pet care
+item::photo/film
+item::pickled vegetables
+item::pip fruit
+item::popcorn
+item::pork
+item::pot plants
+item::potato products
+item::preservation products
+item::processed cheese
+item::prosecco
+item::pudding powder
+item::ready soups
+item::red/blush wine
+item::rice
+item::roll products
+item::rolls/buns
+item::root vegetables
+item::rubbing alcohol
+item::rum
+item::salad dressing
+item::salt
+item::salty snack
+item::sauces
+item::sausage
+item::seasonal products
+item::semi-finished bread
+item::shopping bags
+item::skin care
+item::sliced cheese
+item::snack products
+item::soap
+item::soda
+item::soft cheese
+item::softener
+item::sound storage medium
+item::soups
+item::sparkling wine
+item::specialty bar
+item::specialty cheese
+item::specialty chocolate
+item::specialty fat
+item::specialty vegetables
+item::spices
+item::spread cheese
+item::sugar
+item::sweet spreads
+item::syrup
+item::tea
+item::tidbits
+item::toilet cleaner
+item::tropical fruit
+item::turkey
+item::vinegar
+item::waffles
+item::whipped/sour cream
+item::whisky
+item::white bread
+item::white wine
+item::whole milk
+item::yogurt
+item::zwieback
+size::visible

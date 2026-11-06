@@ -1,0 +1,4 @@
+Mô hình,Validation rows/fold,Bộ đặc trưng,Tham số,AUC CV,AP CV,Precision@10% CV
+Logistic Regression,1638 / 1637 / 1637,item + size,C=0.1; solver=liblinear; max_iter=1500,0.6874599628584491,0.43103114945449644,0.5264227642276423
+MultinomialNB (NB),1638 / 1637 / 1637,item + size + group counts,alpha=0.5,0.6506372124109506,0.39135208598943305,0.4776422764227642
+Random Forest (tree-family),1638 / 1637 / 1637,item + size,trees=120; depth=12; min_leaf=5,0.7481313027776532,0.5266029307507504,0.6138211382113821

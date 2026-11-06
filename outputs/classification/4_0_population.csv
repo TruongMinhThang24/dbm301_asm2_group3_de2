@@ -1,0 +1,4 @@
+Dataset,Basket count,Positive rate
+Original baskets (≥2 items),6141,0.24214297345709168
+Train (80%),4912,0.24206026058631921
+Validation (20%),1229,0.24247355573637103

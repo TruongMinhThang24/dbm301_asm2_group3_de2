@@ -1,0 +1,6 @@
+Kiểm tra,Kết quả,Đạt
+Số dòng,1535,True
+Thứ tự cột,"basket_id,prob",True
+ID và thứ tự khớp test,So từng dòng,True
+Không thiếu/trùng ID,Kiểm tra toàn bộ,True
+"prob hữu hạn trong [0,1]",0.128299 – 0.601551,True

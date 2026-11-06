@@ -1,0 +1,3 @@
+name,family,feature_set,params,auc,ap,precision_at_top10,brier,auc_std,ap_std,seconds
+Rules__confidence_0.2,Rules,rule_matches,"{""max_rules"": 30, ""min_confidence"": 0.2, ""min_lift"": 1.2, ""min_support"": 0.01}",0.6465075722943961,0.3495914813067073,0.42073170731707316,0.18334574546376747,0.008517843308521981,0.007959741182263828,0.44786549999844283
+Rules__confidence_0.3,Rules,rule_matches,"{""max_rules"": 30, ""min_confidence"": 0.3, ""min_lift"": 1.2, ""min_support"": 0.01}",0.6465075722943961,0.3495914813067073,0.42073170731707316,0.18334574546376747,0.008517843308521981,0.007959741182263828,0.3836458000005223
