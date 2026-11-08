@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 from scipy import sparse
 from sklearn.base import BaseEstimator, ClassifierMixin, TransformerMixin, clone
 from sklearn.calibration import calibration_curve
+from sklearn.cluster import KMeans
+from sklearn.decomposition import TruncatedSVD
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -18,11 +20,13 @@ from sklearn.metrics import (average_precision_score, brier_score_loss, classifi
 from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import FeatureUnion, Pipeline
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, normalize
 from sklearn.utils.validation import check_is_fitted
 
 CLF_TARGET = 'other vegetables'
 CLF_SEED = 42
+# Configuration already handed over by WBS 5.4 on the supplied dataset.
+CLF_WBS54_PARAMS = {'n_clusters': 8, 'n_components': 20, 'random_state': 42}
 CLF_FEATURE_SETS = ('item', 'item_size', 'item_size_group')
 CLF_MODEL_NAMES = {'Logistic': 'Logistic Regression', 'MultinomialNB': 'MultinomialNB (NB)',
                    'RandomForest': 'Random Forest (tree-family)', 'Rules': 'Rule-based',
@@ -378,6 +382,64 @@ def clf_threshold_validation(y, probability, threshold):
     return matrix, report
 
 
+def clf_cluster_test_matrix(test_frame, feature_names):
+    """Supply WBS 5.0 with a fixed train vocabulary and record unknown test items."""
+    names = list(feature_names)
+    if not names or len(names) != len(set(names)):
+        raise ValueError('Clustering vocabulary must contain unique training items.')
+    columns = {item: j for j, item in enumerate(names)}
+    baskets = clf_visible_baskets(test_frame.items_list.tolist())
+    matrix = np.zeros((len(baskets), len(names)), dtype=bool)
+    unseen = []
+    for row, (basket_id, basket) in enumerate(zip(test_frame.basket_id, baskets)):
+        for item in basket:
+            if item in columns:
+                matrix[row, columns[item]] = True
+            else:
+                unseen.append({'basket_id': basket_id, 'item': item})
+    index = pd.Index(test_frame.basket_id.to_numpy(copy=True), name='basket_id')
+    return (pd.DataFrame(matrix, index=index, columns=names),
+            pd.DataFrame(unseen, columns=['basket_id', 'item']))
+
+
+class WBS54ClassificationPredictor(BaseEstimator):
+    """Same SVD/L2/KMeans as WBS 5.4, with explicit vocabulary instead of later globals."""
+    def __init__(self, feature_names=None, n_clusters=8, n_components=20, random_state=42):
+        self.feature_names = feature_names
+        self.n_clusters = n_clusters
+        self.n_components = n_components
+        self.random_state = random_state
+
+    def _to_matrix(self, X):
+        if isinstance(X, pd.DataFrame):
+            return X.to_numpy().astype(np.uint8)
+        if sparse.issparse(X):
+            return X.toarray().astype(np.uint8)
+        if isinstance(X, np.ndarray):
+            return X.astype(np.uint8)
+        columns = {item: index for index, item in enumerate(self.feature_names)}
+        matrix = np.zeros((len(X), len(columns)), dtype=np.uint8)
+        for row, basket in enumerate(clf_visible_baskets(X)):
+            for item in basket:
+                if item in columns:
+                    matrix[row, columns[item]] = 1
+        return matrix
+
+    def fit(self, X, y=None):
+        matrix = self._to_matrix(X)
+        n_components = min(self.n_components, matrix.shape[1] - 1)
+        self.svd_ = TruncatedSVD(n_components=n_components, random_state=self.random_state)
+        reduced = normalize(self.svd_.fit_transform(matrix), norm='l2')
+        self.kmeans_ = KMeans(n_clusters=self.n_clusters, random_state=self.random_state, n_init=10)
+        self.kmeans_.fit(reduced)
+        return self
+
+    def predict(self, X):
+        matrix = self._to_matrix(X)
+        reduced = normalize(self.svd_.transform(matrix), norm='l2')
+        return self.kmeans_.predict(reduced)
+
+
 class ClusterLabelFeatures(TransformerMixin, BaseEstimator):
     """Adapt the unfitted predictor handed over in WBS 5.4; no clustering algorithm is invented here."""
     def __init__(self, estimator=None):
@@ -405,7 +467,8 @@ class ClusterLabelFeatures(TransformerMixin, BaseEstimator):
 
 
 def clf_compare_clusters(search, X, y, splits, cluster_predictor=None):
-    base = clf_rank(search['table'].loc[search['table'].family.ne('Rules')]).iloc[0]
+    ordinary_rows = search['table'].family.ne('Rules') & ~search['table'].feature_set.str.endswith('_cluster')
+    base = clf_rank(search['table'].loc[ordinary_rows]).iloc[0]
     rows = [dict(candidate=base['name'], with_cluster=False, auc=base.auc, ap=base.ap,
                  delta_auc=0.0, delta_ap=0.0, status='Đã có mô hình cơ sở')]
     if cluster_predictor is None:
@@ -421,8 +484,12 @@ def clf_compare_clusters(search, X, y, splits, cluster_predictor=None):
     name = base['name'] + '__cluster'
     record = dict(name=name, family=base.family, feature_set=base.feature_set + '_cluster',
                   params=base.params, seconds=np.nan, **result['summary'])
-    search['table'] = clf_rank(pd.concat([search['table'], pd.DataFrame([record])], ignore_index=True))
+    remaining = search['table'].loc[search['table'].name.ne(name)]
+    search['table'] = clf_rank(pd.concat([remaining, pd.DataFrame([record])], ignore_index=True))
     search['registry'][name], search['oof'][name] = estimator, result['oof']
+    if 'fold_metrics' in search:
+        folds = search['fold_metrics'].loc[search['fold_metrics'].candidate.ne(name)]
+        search['fold_metrics'] = pd.concat([folds, result['folds'].assign(candidate=name)], ignore_index=True)
     rows.append(dict(candidate=name, with_cluster=True, auc=result['summary']['auc'], ap=result['summary']['ap'],
         delta_auc=result['summary']['auc'] - base.auc, delta_ap=result['summary']['ap'] - base.ap,
         status='Đã so cùng các fold'))

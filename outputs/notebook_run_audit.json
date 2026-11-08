@@ -1,0 +1,58 @@
+{
+  "elapsed_seconds": 27.14560019999044,
+  "code_cells_executed": 35,
+  "initial_error_count": 0,
+  "plain_restart_run_all_passed": true,
+  "runtime_matrix_prepared": false,
+  "reran_4_6_4_7_after_WBS_5_4": false,
+  "execution_order": "single sequential pass in a fresh kernel",
+  "original_other_member_sources_changed": false,
+  "remaining_saved_error_count": 0,
+  "cluster_comparison": [
+    {
+      "candidate": "RandomForest__item_size__11",
+      "with_cluster": false,
+      "auc": 0.7481313027776532,
+      "ap": 0.5266029307507504,
+      "delta_auc": 0.0,
+      "delta_ap": 0.0,
+      "status": "Đã có mô hình cơ sở"
+    },
+    {
+      "candidate": "RandomForest__item_size__11__cluster",
+      "with_cluster": true,
+      "auc": 0.7467964939076843,
+      "ap": 0.5221970178642811,
+      "delta_auc": -0.0013348088699688,
+      "delta_ap": -0.0044059128864692,
+      "status": "Đã so cùng các fold"
+    }
+  ],
+  "prediction_schema_passed": true,
+  "anomaly_schema_passed": true,
+  "python_version": "3.12.6",
+  "test_vocabulary_policy": "Fixed train vocabulary; unseen test items recorded in outputs/classification/4_6_cluster_unseen_items.csv",
+  "same_cv_fold_sizes": [
+    [
+      3274,
+      1638
+    ],
+    [
+      3275,
+      1637
+    ],
+    [
+      3275,
+      1637
+    ]
+  ],
+  "final_model": "RandomForest__item_size__11",
+  "backup_path": "C:\\Users\\HP\\AppData\\Local\\Temp\\groceries_restore_4_6_20261108_230349",
+  "classification_layout": "4.0-4.7 together before WBS5.0",
+  "shared_predictor_params": {
+    "n_clusters": 8,
+    "n_components": 20,
+    "random_state": 42
+  },
+  "wbs54_selected_k_verified": 8
+}

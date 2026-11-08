@@ -125,6 +125,36 @@ class ClassificationTests(unittest.TestCase):
         self.assertEqual(rows.shape[0], 2)
         self.assertTrue(np.allclose(rows.sum(axis=1), 1))
 
+    def test_cluster_test_input_uses_only_train_columns_and_reports_unknown(self):
+        test = pd.DataFrame({'basket_id': [8544, 99],
+                             'items_list': [['bread', 'baby food'], ['milk']]})
+        original = test.copy(deep=True)
+        matrix, unseen = clf.clf_cluster_test_matrix(test, ['milk', 'bread'])
+        self.assertEqual(matrix.columns.tolist(), ['milk', 'bread'])
+        self.assertEqual(matrix.index.tolist(), [8544, 99])
+        self.assertEqual(matrix.astype(int).to_numpy().tolist(), [[0, 1], [1, 0]])
+        self.assertEqual(unseen.to_dict('records'), [{'basket_id': 8544, 'item': 'baby food'}])
+        pd.testing.assert_frame_equal(test, original)
+
+    def test_shared_predictor_matches_original_wbs54_algorithm(self):
+        import ast
+        notebook = json.loads((ROOT / 'notebooks/notebook.ipynb').read_text(encoding='utf-8'))
+        frame, _ = synthetic_data(90)
+        X, _, _ = clf.clf_prepare_population(frame)
+        vocabulary = sorted({item for basket in X for item in basket})
+        context = dict(np=np, pd=pd, sparse=sparse, BaseEstimator=BaseEstimator,
+                       KMeans=clf.KMeans, TruncatedSVD=clf.TruncatedSVD, normalize=clf.normalize,
+                       item_names=vocabulary, selected_k=3, RANDOM_STATE=42)
+        for cid, name in [('84920567', 'to_binary_array'), ('f4a4fbfc', 'WBS54ClusterPredictor')]:
+            source = ''.join(next(c for c in notebook['cells'] if c['id'] == cid)['source'])
+            node = next(n for n in ast.parse(source).body if getattr(n, 'name', None) == name)
+            exec(compile(ast.Module(body=[node], type_ignores=[]), cid, 'exec'), context)
+        original = context['WBS54ClusterPredictor'](n_clusters=3, n_components=4).fit(X[:60])
+        shared = clf.WBS54ClassificationPredictor(tuple(vocabulary), n_clusters=3, n_components=4).fit(X[:60])
+        np.testing.assert_allclose(shared.svd_.components_, original.svd_.components_)
+        np.testing.assert_array_equal(shared.predict(X[60:]), original.predict(X[60:]))
+        np.testing.assert_array_equal(shared.predict([('unseen_test_only',)]), original.predict([('unseen_test_only',)]))
+
     def test_separate_ml_rules_and_pending_cluster(self):
         frame, mapping = synthetic_data(150)
         X, y, _ = clf.clf_prepare_population(frame)
@@ -148,12 +178,23 @@ class ClassificationTests(unittest.TestCase):
         self.assertTrue(ready)
         self.assertEqual(len(search['table']), old_count + 1)
         self.assertAlmostEqual(compared.iloc[1].delta_ap, compared.iloc[1].ap - compared.iloc[0].ap)
+        # Running 4.6 again must compare against the original model even when the
+        # existing cluster candidate is ranked first, and must not add duplicates.
+        search['table'].loc[search['table'].name.str.endswith('__cluster'), ['ap', 'auc']] = 1.0
+        repeated, ready = clf.clf_compare_clusters(search, X, y, splits, HandoffStub())
+        self.assertTrue(ready)
+        self.assertEqual(len(search['table']), old_count + 1)
+        self.assertFalse(repeated.iloc[0].candidate.endswith('__cluster'))
 
     def test_notebook_outputs_are_under_their_wbs_sections(self):
         import matplotlib
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt
         notebook = json.loads((ROOT / 'notebooks/notebook.ipynb').read_text(encoding='utf-8'))
+        ordered_ids = [c['id'] for c in notebook['cells']]
+        self.assertLess(ordered_ids.index('clf-4-5'), ordered_ids.index('clf-4-6'))
+        self.assertLess(ordered_ids.index('clf-4-6'), ordered_ids.index('clf-4-7'))
+        self.assertLess(ordered_ids.index('clf-4-7'), ordered_ids.index('16506c8b'))
         added = [c for c in notebook['cells'] if c['id'].startswith('clf-')]
         helper = next(c for c in added if 'classification_helper_sha256' in c['metadata'])
         self.assertEqual(''.join(helper['source']), (ROOT / 'src/groceries_group3/classification/workflow.py').read_text(encoding='utf-8'))
@@ -162,8 +203,12 @@ class ClassificationTests(unittest.TestCase):
         test = pd.DataFrame(dict(basket_id=[f'test_{i}' for i in range(1535)], items_list=[
             [x for x in train.iloc[i % len(train)].items_list if x != clf.CLF_TARGET] for i in range(1535)]))
         with tempfile.TemporaryDirectory() as folder, redirect_stdout(io.StringIO()):
+            vocabulary = sorted({item for basket in train.items_list for item in basket})
+            train_matrix = pd.DataFrame([[item in basket for item in vocabulary] for basket in train.items_list],
+                                        columns=vocabulary, index=train.basket_id)
             context = dict(PROJECT_ROOT=Path(folder), train=train, test=test, ITEM_TO_GROUP=mapping,
-                           RuleFeatureTransformer=self.RuleTransformer, display=lambda *args: None)
+                           RuleFeatureTransformer=self.RuleTransformer, display=lambda *args: None,
+                           train_matrix=train_matrix)
             for cell in added:
                 if cell['cell_type'] == 'code':
                     exec(compile(''.join(cell['source']), cell['id'], 'exec'), context)
@@ -180,8 +225,8 @@ class ClassificationTests(unittest.TestCase):
             self.assertEqual(len(pd.read_csv(out / '4_4_validation_metrics.csv')), 5)
             self.assertEqual(int(context['clf_confusion'].to_numpy().sum()), len(context['clf_y_validation']))
             gate = json.loads((out / '4_7_status.json').read_text(encoding='utf-8'))
-            self.assertFalse(gate['wbs_4_6_complete'])
-            self.assertFalse(gate['finalized_after_cluster_comparison'])
+            self.assertTrue(gate['wbs_4_6_complete'])
+            self.assertTrue(gate['finalized_after_cluster_comparison'])
             self.assertFalse(gate['test_used_for_selection'])
             self.assertTrue(context['clf_csv_checks'].iloc[:, -1].all())
             self.assertEqual(len(pd.read_csv(Path(folder) / 'outputs/predictions.csv')), 1535)
